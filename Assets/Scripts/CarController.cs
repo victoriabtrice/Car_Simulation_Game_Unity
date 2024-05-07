@@ -5,25 +5,32 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float motorTorque = 96000; //2000
-    public float brakeTorque = 96000; //2000
-    public float maxSpeed = 20000; //20
-    public float steeringRange = 30; //30
-    public float steeringRangeAtMaxSpeed = 10; //10
+    public float motorTorque = 96000 * 4; //2000
+    public float brakeTorque = 96000 * 4; //2000
+    public float maxSpeed = 20000 * 3.5f; //20
+    public float steeringRange = 30 * 1.5f; //30
+    public float steeringRangeAtMaxSpeed = 10 * 1.5f; //10
     public float centerOfGravityOffset = -2f;
-    public float speed;
+    public float forwardSpeed;
     private int count;
     public Text countPoint;
+    public Text speedText;
 
     Rigidbody rigidBody;
     WheelController[] wheels;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.centerOfMass += Vector3.up * centerOfGravityOffset;
         wheels = GetComponentsInChildren<WheelController>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        countPoint = GameObject.Find("CountPoint").GetComponent<Text>();
+        speedText = GameObject.Find("Speed").GetComponent<Text>();
         count = 0;
         CountPoint();
     }
@@ -31,11 +38,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DisplaySpeed();
+
         float moveV = Input.GetAxis("Vertical");
         float moveH = Input.GetAxis("Horizontal");
 
         // Calculate current speed in relation to the forward direction (backward = negative number)
-        float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.velocity);
+        forwardSpeed = Vector3.Dot(transform.forward, rigidBody.velocity) * 1.5f;
 
         // Calculate how close the car to top speed (from 0 to 1)
         float speedFactor = Mathf.InverseLerp(0, maxSpeed, forwardSpeed);
@@ -85,5 +94,9 @@ public class PlayerController : MonoBehaviour
 
     void CountPoint() {
         countPoint.text = "Point: " + count.ToString();
+    }
+
+    void DisplaySpeed() {
+        speedText.text = "Speed: " + (forwardSpeed * Time.deltaTime * 100).ToString("F2") + " m/s";
     }
 }
