@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class ArrivalDetector : MonoBehaviour
 {
-    public Transform destinationPosition;
+    // public Transform destinationPosition;
     public GameObject messagePanel;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        messagePanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -22,10 +22,10 @@ public class ArrivalDetector : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && other.transform.position == destinationPosition.position)
-        {
+        if(other.tag == "Finish")
+        { 
             messagePanel.SetActive(true);
-            other.GetComponent<PlayerController>().enabled = false;
+            Time.timeScale = 0;
         }
     }
 }

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float motorTorque = 96000 * 4; //2000
-    public float brakeTorque = 96000 * 4; //2000
-    public float maxSpeed = 20000 * 3.5f; //20
+    public float motorTorque = 96000 * 4 * 4; //2000
+    public float brakeTorque = 96000 * 4 * 4; //2000
+    public float maxSpeed = 20000 * 3.5f * 4; //20
     public float steeringRange = 30 * 1.5f; //30
     public float steeringRangeAtMaxSpeed = 10 * 1.5f; //10
     public float centerOfGravityOffset = -2f;
@@ -44,7 +44,11 @@ public class PlayerController : MonoBehaviour
         float moveH = Input.GetAxis("Horizontal");
 
         // Calculate current speed in relation to the forward direction (backward = negative number)
-        forwardSpeed = Vector3.Dot(transform.forward, rigidBody.velocity) * 1.5f;
+        forwardSpeed = Vector3.Dot(transform.forward, rigidBody.velocity * 2.5f);
+
+        if(count > 0){
+            forwardSpeed *= count;
+        }
 
         // Calculate how close the car to top speed (from 0 to 1)
         float speedFactor = Mathf.InverseLerp(0, maxSpeed, forwardSpeed);
@@ -97,6 +101,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void DisplaySpeed() {
-        speedText.text = "Speed: " + (forwardSpeed * Time.deltaTime * 100).ToString("F2") + " m/s";
+        speedText.text = "Speed: " + Mathf.Round(forwardSpeed * Time.deltaTime * 100) + " m/s";
     }
 }

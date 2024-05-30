@@ -355,6 +355,7 @@
 "Assets/Scripts/ArrivalDetector.cs"
 "Assets/Scripts/CameraMovement.cs"
 "Assets/Scripts/CarController.cs"
+"Assets/Scripts/CoinMovement.cs"
 "Assets/Scripts/mainMenu.cs"
 "Assets/Scripts/movement.cs"
 "Assets/Scripts/movementnih.cs"
