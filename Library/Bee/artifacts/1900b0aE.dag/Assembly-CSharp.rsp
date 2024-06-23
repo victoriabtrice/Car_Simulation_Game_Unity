@@ -356,11 +356,11 @@
 "Assets/Scripts/CameraMovement.cs"
 "Assets/Scripts/CarController.cs"
 "Assets/Scripts/CoinMovement.cs"
+"Assets/Scripts/FinishPanelAction.cs"
 "Assets/Scripts/mainMenu.cs"
 "Assets/Scripts/movement.cs"
-"Assets/Scripts/movementnih.cs"
-"Assets/Scripts/nos.cs"
-"Assets/Scripts/npcjalan.cs"
+"Assets/Scripts/nextLevel.cs"
+"Assets/Scripts/RoadMapMenu.cs"
 "Assets/Scripts/WheelController.cs"
 -langversion:9.0
 
