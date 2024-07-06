@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     public float steeringRangeAtMaxSpeed = 10 * 1.5f; //10
     public float centerOfGravityOffset = -2f;
     public float forwardSpeed;
-    private int count;
+    public int count;
+    public int crash;
+    public int crashtime;
     public Text countPoint;
     public Text speedText;
 
@@ -32,6 +34,8 @@ public class PlayerController : MonoBehaviour
         countPoint = GameObject.Find("CountPoint").GetComponent<Text>();
         speedText = GameObject.Find("Speed").GetComponent<Text>();
         count = 0;
+        // crash = 0;
+        crashtime = 0;
         CountPoint();
     }
 
@@ -45,6 +49,8 @@ public class PlayerController : MonoBehaviour
 
         // Calculate current speed in relation to the forward direction (backward = negative number)
         forwardSpeed = Vector3.Dot(transform.forward, rigidBody.velocity * 2.5f);
+
+        PlayerPrefs.SetFloat("SpeedValue", forwardSpeed);
 
         if(count > 0){
             forwardSpeed *= count;
@@ -93,11 +99,15 @@ public class PlayerController : MonoBehaviour
             // GetComponent<Rigidbody>().AddForce(jump*speed*Time.deltaTime, ForceMode.Impulse);
             count = count-5;
             CountPoint();
+            // crash = -5;
+            crashtime += 1;
+            PlayerPrefs.SetInt("CrashValue", crashtime);
         }
     }
 
     void CountPoint() {
         countPoint.text = "Point: " + count.ToString();
+        PlayerPrefs.SetInt("PointValue", count);
     }
 
     void DisplaySpeed() {

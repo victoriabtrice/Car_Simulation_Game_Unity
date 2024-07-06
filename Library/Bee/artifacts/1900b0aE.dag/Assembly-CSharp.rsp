@@ -358,9 +358,13 @@
 "Assets/Scripts/CoinMovement.cs"
 "Assets/Scripts/FinishPanelAction.cs"
 "Assets/Scripts/mainMenu.cs"
+"Assets/Scripts/MiniMap.cs"
 "Assets/Scripts/movement.cs"
+"Assets/Scripts/Music, Sound Effect/Audio.cs"
+"Assets/Scripts/Music, Sound Effect/Sound.cs"
 "Assets/Scripts/nextLevel.cs"
 "Assets/Scripts/RoadMapMenu.cs"
+"Assets/Scripts/Timer.cs"
 "Assets/Scripts/WheelController.cs"
 -langversion:9.0
 

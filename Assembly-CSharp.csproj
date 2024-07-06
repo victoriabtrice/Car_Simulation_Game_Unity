@@ -69,10 +69,14 @@
     <Compile Include="Assets\Scripts\nextLevel.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\Scripts\CoinMovement.cs" />
+    <Compile Include="Assets\Scripts\Music, Sound Effect\Sound.cs" />
     <Compile Include="Assets\Scripts\movement.cs" />
     <Compile Include="Assets\Scripts\RoadMapMenu.cs" />
+    <Compile Include="Assets\Scripts\MiniMap.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\Scripts\WheelController.cs" />
     <Compile Include="Assets\Scripts\mainMenu.cs" />
+    <Compile Include="Assets\Scripts\Music, Sound Effect\Audio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -81,6 +85,7 @@
     <None Include="Assets\AssetGame\KajamansRoads\FileNamesDescription.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\AssetGame\LudoLoon Studio\Starting Line (Free)\Readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\AssetGame\KajamansRoads\Free\ReadMe.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />

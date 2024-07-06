@@ -6,8 +6,6 @@ public class cameraMovement : MonoBehaviour
 {
     public GameObject CarPlayer;
     private Vector3 offset;
-    // public float smoothSpeed = 0.125f;
-    // Vector3 velocity = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +21,9 @@ public class cameraMovement : MonoBehaviour
 
     void LateUpdate() 
     {
-        transform.position = CarPlayer.transform.position + offset;
-        // Vector3 smoothPosition = Vector3.Lerp(transform.position, position, smoothSpeed * Time.deltaTime);
-        // transform.position = Vector3.SmoothDamp(transform.position, position, ref velocity, smoothSpeed);
-        // transform.LookAt(CarPlayer.transform);
+        // transform.position = CarPlayer.transform.position + offset;
+        Vector3 targetPosition = CarPlayer.transform.position + offset;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5f);
+        transform.rotation = CarPlayer.transform.rotation;
     }
 }

@@ -861,6 +861,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button_home: {fileID: 1868794234}
   button_nextgame: {fileID: 559899551}
+  point_res: {fileID: 242251175}
+  crash_res: {fileID: 1424602928}
+  time: {fileID: 1472014012}
 --- !u!1 &1034935817
 GameObject:
   m_ObjectHideFlags: 0
