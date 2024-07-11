@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     public int crashtime;
     public Text countPoint;
     public Text speedText;
+    public GameObject directionImage;
+    public Text directionText;
+    public float displayDuration = 5f;
+    private bool isDisplayingText = false;
 
     Rigidbody rigidBody;
     WheelController[] wheels;
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         countPoint = GameObject.Find("CountPoint").GetComponent<Text>();
         speedText = GameObject.Find("Speed").GetComponent<Text>();
+        directionText = GameObject.Find("Direction").GetComponent<Text>();
         count = 0;
         // crash = 0;
         crashtime = 0;
@@ -103,7 +108,41 @@ public class PlayerController : MonoBehaviour
             crashtime += 1;
             PlayerPrefs.SetInt("CrashValue", crashtime);
         }
+        if (other.gameObject.tag == "straight" && !isDisplayingText)
+        {
+            directionImage.SetActive(true);
+            directionText.text = "Go Straight";
+            isDisplayingText = true;
+            Invoke("HideText", displayDuration);
+        }
+        if (other.gameObject.tag == "turnLeft" && !isDisplayingText)
+        {
+            directionImage.SetActive(true);
+            directionText.text = "Turn Left";
+            isDisplayingText = true;
+            Invoke("HideText", displayDuration);
+        }
+        if (other.gameObject.tag == "nearDestination" && !isDisplayingText)
+        {
+            directionImage.SetActive(true);
+            directionText.text = "Near Mikroskil University";
+            isDisplayingText = true;
+            Invoke("HideText", displayDuration);
+        }
     }
+
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     // Check if the collision is with the specified object
+    //     if (collision.gameObject.CompareTag("straight") && !isDisplayingText)
+    //     {
+    //         directionImage.SetActive(true);
+    //         directionText.text = "Go Straight";
+    //         isDisplayingText = true;
+    //         Invoke("HideText", displayDuration);
+    //     }
+    // }
+
 
     void CountPoint() {
         countPoint.text = "Point: " + count.ToString();
@@ -112,5 +151,12 @@ public class PlayerController : MonoBehaviour
 
     void DisplaySpeed() {
         speedText.text = "Speed: " + Mathf.Round(forwardSpeed * Time.deltaTime * 100) + " m/s";
+    }
+
+    private void HideText()
+    {
+        directionImage.SetActive(false);
+        directionText.text = "";
+        isDisplayingText = false;
     }
 }

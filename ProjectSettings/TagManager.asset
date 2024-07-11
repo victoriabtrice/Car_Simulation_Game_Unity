@@ -6,6 +6,9 @@ TagManager:
   tags:
   - silverCoin
   - hazard
+  - straight
+  - turnLeft
+  - nearDestination
   layers:
   - Default
   - TransparentFX

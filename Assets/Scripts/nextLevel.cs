@@ -20,11 +20,17 @@ public class nextLevel : MonoBehaviour
 
     void home()
     {
+        PlayerPrefs.DeleteKey("CrashValue");
+        PlayerPrefs.DeleteKey("PointValue");
+        PlayerPrefs.Save();
         SceneManager.LoadScene(0);
     }
 
     void next_level()
     {
+        PlayerPrefs.DeleteKey("CrashValue");
+        PlayerPrefs.DeleteKey("PointValue");
+        PlayerPrefs.Save();
         SceneManager.LoadScene(5);
     }
 
