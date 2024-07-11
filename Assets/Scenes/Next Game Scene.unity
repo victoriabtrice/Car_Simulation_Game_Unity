@@ -555,7 +555,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'CONGRATULATIONS!
 
-    Level 1 Completed!'
+    Level Completed!'
 --- !u!222 &619072895
 CanvasRenderer:
   m_ObjectHideFlags: 0
